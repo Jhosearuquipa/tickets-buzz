@@ -8,12 +8,17 @@ import {
 import App from './App.jsx'
 import Root from './routes/root.jsx';
 import ErrorPage from './ErrorPage.jsx';
+import AddTicket from './pages/AddTicket.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <ErrorPage />
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "create",
+    element: <AddTicket />,
   },
 ]);
 
