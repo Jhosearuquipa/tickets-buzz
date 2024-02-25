@@ -35,7 +35,6 @@ export default function TicketItem({ issue, deleteIssue, updateIssue }) {
                </div>
             </div>
             <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-               <p className="text-sm leading-6 text-gray-900">Business Relations</p>
                <div className="mt-1 flex items-center gap-x-1.5">
                   <div className="flex-none rounded-full bg-emerald-500/20 p-1">
                      <div className="h-1.5 w-1.5 rounded-full bg-emerald-500"></div>

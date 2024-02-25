@@ -8,8 +8,8 @@ const giphyService = {
          const data = await response.json();
 
          if (response.ok && data.data && data.data.url) {
-            const gifUrl = data.data.url.split('?')[0];
-            return gifUrl;
+
+            return data.data.url;
          } else {
             console.error('Error al obtener un gif. Respuesta de Giphy:', data);
             return null;

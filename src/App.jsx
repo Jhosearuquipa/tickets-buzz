@@ -3,7 +3,6 @@ import { Link, Outlet } from "react-router-dom";
 
 
 import './App.css'
-import Sidebar from './components/Sidebar';
 import TicketList from './pages/TicketList';
 
 export default function App() {
