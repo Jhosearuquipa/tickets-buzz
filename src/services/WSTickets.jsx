@@ -2,7 +2,7 @@ import localforage from "localforage";
 import { matchSorter } from "match-sorter";
 import sortBy from "sort-by";
 
-export async function getTickets(query) {
+export async function getTickets() {
    try {
       const response = await fetch(`http://localhost/tickets-buzz/tickets-api/public/api/issues`);
       if (!response.ok) {
@@ -11,12 +11,11 @@ export async function getTickets(query) {
       const tickets = await response.json();
       if (!tickets) tickets = [];
 
-      if (query) {
-         tickets = matchSorter(tickets, query, { keys: ["name", "description"] });
-      }
-      return tickets.sort(sortBy("id", "created_at"));
+
+      return tickets.sort(sortBy("created_at"));
+
    } catch (error) {
-      console.error("Error al obtener tickets:", error.message);
+      console.error("Error al obtener todos los tickets:", error.message);
       throw error;
    }
 }
@@ -30,12 +29,12 @@ export async function createTicket(newTicket) {
 
       if (!response.ok) {
          const errorMessage = await response.text(); // Obtén el mensaje de error del cuerpo de la respuesta
-         throw new Error(`Failed to create ticket. Status: ${response.status}. Error: ${errorMessage}`);
+         throw new Error(`Error al crear ticket. Status: ${response.status}. Error: ${errorMessage}`);
       }
 
       return await response.json();
    } catch (error) {
-      console.error('Error creating ticket:', error.message);
+      console.error('Error al crear ticket:', error.message);
       throw error;
    }
 }

@@ -16,57 +16,19 @@ import GiphySelector from "../services/GiphySelector.jsx";
 
 export async function loader({ request }) {
    const url = new URL(request.url);
-   const q = url.searchParams.get("q");
-   const tickets = await getTickets(q);
-   return { tickets, q };
+   const tickets = await getTickets();
+   return { tickets };
 }
 
 export default function App() {
-   const { tickets, q } = useLoaderData();
+   const { tickets } = useLoaderData();
    const navigation = useNavigation();
-   const submit = useSubmit();
-
-   const searching =
-      navigation.location &&
-      new URLSearchParams(navigation.location.search).has(
-         "q"
-      );
-
-   useEffect(() => {
-      document.getElementById("q").value = q;
-   }, [q]);
 
    return (
       <>
          <div id="sidebar">
             <h1>Jhoselyn Aruquipa </h1>
-            <div>
-               <Form id="search-form" role="search">
-                  <input
-                     id="q"
-                     className={searching ? "loading" : ""}
-                     aria-label="Search tickets"
-                     placeholder="Search"
-                     type="search"
-                     name="q"
-                     defaultValue={q}
-                     onChange={(event) => {
-                        const isFirstSearch = q == null;
-                        submit(event.currentTarget.form, {
-                           replace: !isFirstSearch,
-                        });
-                     }}
-                  />
-                  <div
-                     id="search-spinner"
-                     aria-hidden
-                     hidden={!searching}
-                  />
-                  <div
-                     className="sr-only"
-                     aria-live="polite"
-                  ></div>
-               </Form>
+            <div className="text-right">
                <Link to={`tickets/create`}>
                   <button type="button" className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Nuevo</button>
                </Link>
