@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 
 import { getTickets } from "../services/WSTickets.jsx";
+import GiphySelector from "../services/GiphySelector.jsx";
 
 
 export async function loader({ request }) {
@@ -90,7 +91,7 @@ export default function App() {
                            >
 
                               <div className="flex min-w-0 gap-x-4">
-                                 <img className="h-12 w-12 flex-none rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                                 <GiphySelector difficultyLevel={ticket.level_id} />
                                  <div className="min-w-0 flex-auto">
                                     <p className="text-sm font-semibold leading-6 text-gray-900">{ticket.title}</p>
                                     <p className="mt-1 truncate text-xs leading-5 text-gray-500">{ticket.description}</p>
