@@ -11,7 +11,7 @@ const giphyService = {
 
             return data.data.url;
          } else {
-            console.error('Error al obtener un gif. Respuesta de Giphy:', data);
+            console.error('Error al obtener un gif:', data);
             return null;
          }
       } catch (error) {

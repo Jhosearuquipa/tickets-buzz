@@ -4,7 +4,7 @@ import sortBy from "sort-by";
 
 export async function getTickets(query) {
    try {
-      const response = await fetch(`http://localhost/tickets-api/public/api/issues`);
+      const response = await fetch(`http://localhost/tickets-buzz/tickets-api/public/api/issues`);
       if (!response.ok) {
          throw new Error(`Error al obtener tickets: ${response.statusText}`);
       }
@@ -23,7 +23,7 @@ export async function getTickets(query) {
 
 export async function createTicket(newTicket) {
    try {
-      const response = await fetch(`http://localhost/tickets-api/public/api/issues`, {
+      const response = await fetch(`http://localhost/tickets-buzz/tickets-api/public/api/issues`, {
          method: 'POST',
          body: JSON.stringify(newTicket),
       });
@@ -42,7 +42,7 @@ export async function createTicket(newTicket) {
 
 export async function getTicket(id) {
    try {
-      const apiUrl = `http://localhost/tickets-api/public/api/issues/${id}`;
+      const apiUrl = `http://localhost/tickets-buzz/tickets-api/public/api/issues/${id}`;
       const response = await fetch(apiUrl);
       if (response.ok) {
          const ticket = await response.json();
@@ -59,7 +59,7 @@ export async function getTicket(id) {
 
 export async function updateTicket(id, updates) {
    try {
-      const response = await fetch(`http://localhost/tickets-api/public/api/issues/${id}`, {
+      const response = await fetch(`http://localhost/tickets-buzz/tickets-api/public/api/issues/${id}`, {
          method: 'PUT',
          body: JSON.stringify(updates),
       });
@@ -88,22 +88,4 @@ export async function deleteTicket(id) {
 
 function set(tickets) {
    return localforage.setItem("tickets", tickets);
-}
-
-// fake a cache so we don't slow down stuff we've already seen
-let fakeCache = {};
-
-async function fakeNetwork(key) {
-   if (!key) {
-      fakeCache = {};
-   }
-
-   if (fakeCache[key]) {
-      return;
-   }
-
-   fakeCache[key] = true;
-   return new Promise(res => {
-      setTimeout(res, Math.random() * 800);
-   });
 }

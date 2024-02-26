@@ -21,25 +21,6 @@ export default function Ticket() {
 
    return (
       <div id="ticket">
-         {/* <div>
-            <div>
-               <Form
-                  method="post"
-                  action="destroy"
-                  onSubmit={(event) => {
-                     if (
-                        !confirm(
-                           "Please confirm you want to delete this record."
-                        )
-                     ) {
-                        event.preventDefault();
-                     }
-                  }}
-               >
-                  <button type="submit">Delete</button>
-               </Form>
-            </div>
-         </div> */}
          <div className="mt-6 flex items-center justify-end gap-x-6">
             <Form action="edit">
                <button className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" type="submit">Editar</button>
@@ -70,22 +51,3 @@ export default function Ticket() {
    );
 }
 
-function Favorite({ ticket }) {
-   // yes, this is a `let` for later
-   let favorite = ticket.favorite;
-   return (
-      <Form method="post">
-         <button
-            name="favorite"
-            value={favorite ? "false" : "true"}
-            aria-label={
-               favorite
-                  ? "Remove from favorites"
-                  : "Add to favorites"
-            }
-         >
-            {favorite ? "★" : "☆"}
-         </button>
-      </Form>
-   );
-}

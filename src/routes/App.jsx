@@ -6,7 +6,6 @@ import {
    NavLink,
    useLoaderData,
    Form,
-   redirect,
    useNavigation,
    useSubmit
 } from "react-router-dom";
@@ -21,8 +20,6 @@ export async function loader({ request }) {
    const tickets = await getTickets(q);
    return { tickets, q };
 }
-
-
 
 export default function App() {
    const { tickets, q } = useLoaderData();
@@ -89,7 +86,6 @@ export default function App() {
                                        : ""
                               }
                            >
-
                               <div className="flex min-w-0 gap-x-4">
                                  <GiphySelector difficultyLevel={ticket.level_id} />
                                  <div className="min-w-0 flex-auto">
