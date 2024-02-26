@@ -16,7 +16,7 @@ class Issues extends Model
     protected $allowedFields    = [
         'title',
         'description',
-        'level_id',
+        'level',
         'closed_on',
         'created_by',
         'updated_by',
@@ -43,8 +43,8 @@ class Issues extends Model
             'label' => 'description',
             'rules' => 'required'
         ],
-        'level_id' => [
-            'label' => 'level_id',
+        'level' => [
+            'label' => 'level',
             'rules' => 'required'
         ],
     ];
@@ -55,7 +55,7 @@ class Issues extends Model
         'description' => [
             'required' => 'El campo {field} es requerido.'
         ],
-        'level_id' => [
+        'level' => [
             'required' => 'El campo {field} es requerido.'
         ],
     ];
@@ -78,8 +78,7 @@ class Issues extends Model
         return [
             'title'  => $faker->words(10, true),
             'description'  => $faker->text(),
-            'level_id'  => $faker->randomDigit(),
-            'closed_on'  => $faker->dateTimeThisMonth->format('Y-m-d H:i:s'),
+            'level'  => $faker->randomElement(['easy', 'medium', 'hard']),
             'created_by'  => $faker->randomDigit(),
             'updated_by'  => $faker->randomDigit(),
             'created_at'  => $faker->dateTimeThisYear()->format('Y-m-d H:i:s'),

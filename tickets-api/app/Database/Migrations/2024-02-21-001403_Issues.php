@@ -25,8 +25,8 @@ class Issues extends Migration
                 'constraint'    => 11,
             ],
             'level'    => [
-                'type'          => 'INT',
-                'constraint'    => 11,
+                'type'          => 'VARCHAR',
+                'constraint'    => 25,
             ],
             'created_by'    => [
                 'type'          => 'INT',

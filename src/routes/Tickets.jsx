@@ -38,7 +38,7 @@ export default function Ticket() {
                   </div>
                   <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                      <dt className="text-sm font-medium leading-6 text-gray-900">Nivel de dificultad</dt>
-                     <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><span className="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">{ticket.level_id}</span></dd>
+                     <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><span className="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">{ticket.level}</span></dd>
                   </div>
                   <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                      <dt className="text-sm font-medium leading-6 text-gray-900">Descripción</dt>

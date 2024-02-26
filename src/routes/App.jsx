@@ -49,7 +49,7 @@ export default function App() {
                               }
                            >
                               <div className="flex min-w-0 gap-x-4">
-                                 <GiphySelector difficultyLevel={ticket.level_id} />
+                                 <GiphySelector difficultyLevel={ticket.level} />
                                  <div className="min-w-0 flex-auto">
                                     <p className="text-sm font-semibold leading-6 text-gray-900">{ticket.title}</p>
                                     <p className="mt-1 truncate text-xs leading-5 text-gray-500">{ticket.description}</p>
@@ -59,7 +59,7 @@ export default function App() {
                                  <div className="flex-none rounded-full bg-emerald-500/20 p-1">
                                     <div className="h-1.5 w-1.5 rounded-full bg-emerald-500"></div>
                                  </div>
-                                 <p className="text-xs leading-5 text-gray-500">{ticket.level_id}</p>
+                                 <p className="text-xs leading-5 text-gray-500">{ticket.level}</p>
                               </div>
 
                            </NavLink>
