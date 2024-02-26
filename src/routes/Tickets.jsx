@@ -2,8 +2,18 @@ import { Form, useLoaderData } from "react-router-dom";
 import { getTicket } from "../services/WSTickets.jsx";
 
 export async function loader({ params }) {
-   const ticket = await getTicket(params.ticketId);
-   return { ticket };
+   if (Object.keys(params).length === 0) {
+      const ticket = {
+         title: '',
+         description: '',
+      };
+      return { ticket };
+   } else {
+      const ticket = await getTicket(params.ticketId);
+      return { ticket };
+   }
+   //  
+
 }
 
 export default function Ticket() {

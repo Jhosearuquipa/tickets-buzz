@@ -11,12 +11,8 @@ import {
    useSubmit
 } from "react-router-dom";
 
-import { getTickets, createTicket } from "../services/WSTickets.jsx";
+import { getTickets } from "../services/WSTickets.jsx";
 
-export async function action() {
-   const ticket = await createTicket();
-   return redirect(`/tickets/${ticket.id}/edit`);
-}
 
 export async function loader({ request }) {
    const url = new URL(request.url);
@@ -45,7 +41,7 @@ export default function App() {
    return (
       <>
          <div id="sidebar">
-            <h1>React Router Contacts</h1>
+            <h1>Jhoselyn Aruquipa </h1>
             <div>
                <Form id="search-form" role="search">
                   <input
@@ -74,7 +70,7 @@ export default function App() {
                   ></div>
                </Form>
                <Link to={`tickets/create`}>
-                  <button type="submit">New</button>
+                  <button type="button" className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Nuevo</button>
                </Link>
             </div>
             <nav>

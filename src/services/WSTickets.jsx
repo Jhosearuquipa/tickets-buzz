@@ -21,14 +21,23 @@ export async function getTickets(query) {
    }
 }
 
-export async function createTicket() {
-   await fakeNetwork();
-   let id = Math.random().toString(36).substring(2, 9);
-   let ticket = { id, createdAt: Date.now() };
-   let tickets = await getTickets();
-   tickets.unshift(ticket);
-   await set(tickets);
-   return ticket;
+export async function createTicket(newTicket) {
+   try {
+      const response = await fetch(`http://localhost/tickets-api/public/api/issues`, {
+         method: 'POST',
+         body: JSON.stringify(newTicket),
+      });
+
+      if (!response.ok) {
+         const errorMessage = await response.text(); // Obtén el mensaje de error del cuerpo de la respuesta
+         throw new Error(`Failed to create ticket. Status: ${response.status}. Error: ${errorMessage}`);
+      }
+
+      return await response.json();
+   } catch (error) {
+      console.error('Error creating ticket:', error.message);
+      throw error;
+   }
 }
 
 export async function getTicket(id) {
@@ -52,10 +61,6 @@ export async function updateTicket(id, updates) {
    try {
       const response = await fetch(`http://localhost/tickets-api/public/api/issues/${id}`, {
          method: 'PUT',
-         headers: {
-            'Content-Type': 'application/json',
-            // Puedes agregar otros encabezados según sea necesario
-         },
          body: JSON.stringify(updates),
       });
 

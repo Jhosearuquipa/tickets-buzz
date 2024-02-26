@@ -6,8 +6,7 @@ import {
 } from "react-router-dom";
 
 import App, {
-   loader as appLoader,
-   action as appAction,
+   loader as appLoader
 } from './routes/App.jsx';
 
 import './App.css';
@@ -15,6 +14,10 @@ import ErrorPage from './ErrorPage.jsx';
 import Ticket, {
    loader as ticketLoader,
 } from './routes/Tickets.jsx';
+
+import AddTicket, {
+   action as addAction,
+} from './routes/Add.jsx';
 
 import EditTicket, {
    action as editAction,
@@ -32,7 +35,6 @@ const router = createBrowserRouter([
       element: <App />,
       errorElement: <ErrorPage />,
       loader: appLoader,
-      action: appAction,
       children: [
          {
             errorElement: <ErrorPage />,
@@ -43,8 +45,8 @@ const router = createBrowserRouter([
                },
                {
                   path: "tickets/create",
-                  element: <EditTicket />,
-                  loader: ticketLoader,
+                  element: <AddTicket />,
+                  action: addAction,
                },
                {
                   path: "tickets/:ticketId",
